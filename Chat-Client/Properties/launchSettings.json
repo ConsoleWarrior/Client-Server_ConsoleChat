@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Chat-Client": {
+      "commandName": "Project",
+      "commandLineArgs": "Petya"
+    }
+  }
+}
