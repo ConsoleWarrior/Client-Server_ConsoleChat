@@ -1,12 +1,6 @@
 ﻿using Chat_Server;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
 
 namespace Chat_Client
 {
@@ -32,30 +26,25 @@ namespace Chat_Client
 				}
 				catch (SocketException)
 				{
-                    Console.WriteLine("Server not found");
-                }
-
-
+					Console.WriteLine("Server not found");
+				}
 			}
 		}
 		public void Run(TcpClient client)
 		{
 			Task.Run(() => RecieveMessage(client));
 			var writer = new StreamWriter(client.GetStream());
-
 			var message = new Message($"{name} join to server!", DateTime.Now, name, "Server");
 			writer.WriteLine(message.SerializeMessageToJson());
 			writer.Flush();
-
 			while (true)
 			{
-                Console.WriteLine("Input your message:");
-                string inputText = Console.ReadLine();
+				Console.WriteLine("Input your message:");
+				string inputText = Console.ReadLine();
 				if (inputText == "exit") break;
 				message = new Message(inputText, DateTime.Now, name, "Server");
 				writer.WriteLine(message.SerializeMessageToJson());
 				writer.Flush();
-
 			}
 		}
 		public void SendMessage(TcpClient client, Message message)

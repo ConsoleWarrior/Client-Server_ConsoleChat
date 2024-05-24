@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace Chat_Server
 {
@@ -19,7 +14,7 @@ namespace Chat_Server
 
 		public void Print()
 		{
-            Console.WriteLine($"{this.DateTime.ToLongTimeString()} from {this.NickNameFrom}: \"{this.Text}\"");
-        }
+			Console.WriteLine($"{this.DateTime.ToLongTimeString()} from {this.NickNameFrom}: \"{this.Text}\"");
+		}
 	}
 }

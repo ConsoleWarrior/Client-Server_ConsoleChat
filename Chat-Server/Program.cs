@@ -7,7 +7,6 @@
 			Server server = new();
 			server.Start();
 			Console.WriteLine("SERVER DOWN");
-			//Console.ReadLine();		}
 		}
 	}
 }
